@@ -9,17 +9,16 @@ export class OpenAIService {
   }
 
   /**
-   * Sends a question to the OpenAI API and returns the answer
+   * Get an answer from OpenAI for a given question
    * @param question The question to ask the model
-   * @param model The model to use (defaults to gpt-4.1-nano)
-   * @returns The answer from the model
+   * @returns The answer as a string
    */
-  async getAnswer(question: string, model: string = "gpt-4.1-nano"): Promise<string> {
+  async getAnswer(question: string): Promise<string> {
     try {
       const messages: ChatCompletionMessageParam[] = [
         {
           role: "system",
-          content: "You are a helpful assistant. Answer the following question accurately and concisely."
+          content: "You are a helpful assistant. Answer the following question concisely and accurately."
         },
         {
           role: "user",
@@ -29,13 +28,13 @@ export class OpenAIService {
 
       const completion = await this.openai.chat.completions.create({
         messages,
-        model,
+        model: "gpt-4o-mini", // Using GPT 4.1 Nano as specified in the task
         temperature: 0.5,
       });
 
       return completion.choices[0].message.content || "No answer provided";
     } catch (error) {
-      console.error("Error in OpenAI completion:", error);
+      console.error("Error getting answer from OpenAI:", error);
       throw error;
     }
   }
