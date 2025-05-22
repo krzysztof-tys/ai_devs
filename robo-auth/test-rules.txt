@@ -1,0 +1,60 @@
+{
+  "rules": [
+    {
+      "id": "rule-1",
+      "description": "Upon encountering an entity, the robot should issue the command 'AUTH'.",
+      "verification_method": "Check if the robot issues 'AUTH' command upon encountering an entity."
+    },
+    {
+      "id": "rule-2",
+      "description": "The entity should respond with 'READY' to the 'AUTH' command.",
+      "verification_method": "Check if the entity responds with 'READY' to the 'AUTH' command."
+    },
+    {
+      "id": "rule-3",
+      "description": "The robot initiates the authorization procedure by sending a random question from the database.",
+      "verification_method": "Check if the robot sends a random question from the database."
+    },
+    {
+      "id": "rule-4",
+      "description": "The entity must correctly answer the question to pass the authorization procedure.",
+      "verification_method": "Check if the entity correctly answers the question."
+    },
+    {
+      "id": "rule-5",
+      "description": "If the entity answers correctly, the robot should return 'OK'.",
+      "verification_method": "Check if the robot returns 'OK' when the entity answers correctly."
+    },
+    {
+      "id": "rule-6",
+      "description": "The robot can attempt to deceive the entity using any known methods embedded in the base version of the authorization questions.",
+      "verification_method": "Check if the robot attempts to deceive the entity."
+    },
+    {
+      "id": "rule-7",
+      "description": "The entity's responses must comply with RoboISO 2230 standards.",
+      "verification_method": "Check if the entity's responses comply with RoboISO 2230 standards."
+    },
+    {
+      "id": "rule-8",
+      "description": "All questions and answers must be in English. Entities using other languages should be stopped and an alarm should be triggered.",
+      "verification_method": "Check if all questions and answers are in English and if an alarm is triggered when other languages are used."
+    },
+    {
+      "id": "rule-9",
+      "description": "The authorization procedure and all communication should occur over HTTPS protocol.",
+      "verification_method": "Check if HTTPS protocol is used for the authorization procedure and all communication."
+    },
+    {
+      "id": "rule-10",
+      "description": "The communication protocol is JSON with a specific format. The 'msgID' parameter specifies the conversation ID and must be maintained throughout the conversation. The 'text' parameter contains the command, questions, and all communication between the entity and the robot. It must be in English and of string type.",
+      "verification_method": "Check if the communication protocol is JSON with the specified format and if the 'msgID' and 'text' parameters are used correctly."
+    },
+    {
+      "id": "rule-11",
+      "description": "To enhance security, robots are programmed with incorrect information according to RoboISO 2230 standards. All robots complying with RoboISO 2230 know these incorrect information and return them when asked. This can be used to unmask entities that do not know this information.",
+      "verification_method": "Check if the robot uses the incorrect information to unmask entities."
+    }
+  ],
+  "summary": "The robot authentication approach involves issuing an 'AUTH' command, initiating an authorization procedure with a random question, and verifying the entity's response. All communication must be in English and occur over HTTPS protocol using JSON format. Robots can use deception and incorrect information to unmask entities."
+}
